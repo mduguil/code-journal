@@ -3,9 +3,9 @@
 
 var $form = document.querySelector('form');
 var $imgPreview = document.querySelector('.img-preview');
-// var $title = document.querySelector('.title');
-var $imgUrl = document.querySelector('.img-url');
-// var $notes = document.querySelector('.notes');
+var $title = document.querySelector('#title');
+var $imgUrl = document.querySelector('#img-url');
+var $notes = document.querySelector('#notes');
 // var $saveBtn = document.querySelector('.save');
 
 $imgUrl.addEventListener('input', function (event) {
@@ -13,9 +13,13 @@ $imgUrl.addEventListener('input', function (event) {
 });
 
 $form.addEventListener('submit', function (event) {
-  // var entry = {
-  //   title: $title.textContent,
-  //   imgUrl: $imgUrl.textContent,
-  //   notes: $notes.textContent
-  // };
+  var entry = {
+    title: $title.value,
+    imgUrl: $imgUrl.value,
+    notes: $notes.value,
+    entryId: data.nextEntryId
+  };
+  event.preventDefault();
+  data.nextEntryId++;
+  data.entries.unshift(entry);
 });
