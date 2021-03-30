@@ -27,6 +27,10 @@ h2 {
   color: white;
 }
 
+a {
+  text-decoration: none;
+}
+
 .row {
   margin-bottom: 23px;
 }
