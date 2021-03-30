@@ -24,4 +24,5 @@ $form.addEventListener('submit', function (event) {
   data.nextEntryId++;
   data.entries.push(entry);
   $imgPreview.setAttribute('src', defaultImg);
+  $form.reset();
 });
