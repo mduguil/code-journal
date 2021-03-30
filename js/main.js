@@ -3,6 +3,7 @@
 
 var $form = document.querySelector('form');
 var $imgPreview = document.querySelector('.img-preview');
+var defaultImg = $imgPreview.getAttribute('src');
 var $title = document.querySelector('#title');
 var $imgUrl = document.querySelector('#img-url');
 var $notes = document.querySelector('#notes');
@@ -21,5 +22,6 @@ $form.addEventListener('submit', function (event) {
   };
   event.preventDefault();
   data.nextEntryId++;
-  data.entries.unshift(entry);
+  data.entries.push(entry);
+  $imgPreview.setAttribute('src', defaultImg);
 });
