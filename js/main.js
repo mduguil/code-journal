@@ -27,3 +27,38 @@ $form.addEventListener('submit', function (event) {
   $imgPreview.setAttribute('src', defaultImg);
   $form.reset();
 });
+
+// function addEntries(entry) {
+//   var $entryContainer = document.querySelector('.entry-container');
+
+//   var $ul = document.createElement('ul');
+//   $entryContainer.appendChild($ul);
+
+//   var $containerRow = document.createElement('div');
+//   $containerRow.setAttribute('class', 'row');
+//   $ul.appendChild($containerRow);
+
+//   var $containerColumn1 = document.createElement('div');
+//   $containerColumn1.setAttribute('class', 'column-half');
+//   $containerRow.appendChild($containerColumn1);
+
+//   var $entryImg = document.createElement('img');
+//   $entryImg.setAttribute('src', entry.imgUrl);
+//   $containerColumn1.appendChild($entryImg);
+
+//   var $containerColumn2 = document.createElement('div');
+//   $containerColumn2.setAttribute('class', 'column-half');
+//   $containerRow.appendChild($containerColumn2);
+
+//   var $entryTitle = document.createElement('li');
+//   $entryTitle.setAttribute('class', 'entry-title');
+//   $entryTitle.textContent = entry.title;
+//   $containerColumn2.appendChild($entryTitle);
+
+//   var $entryNotes = document.createElement('li');
+//   $entryNotes.setAttribute('class', 'entry-notes');
+//   $entryNotes.textContent = entry.notes;
+//   $containerColumn2.appendChild($entryNotes);
+
+//   return $ul;
+// }
