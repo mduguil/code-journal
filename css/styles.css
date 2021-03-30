@@ -40,6 +40,7 @@ input {
   border: 1px solid rgb(214, 213, 213);
   border-radius: 3px;
   background-color: white;
+  outline-color: #562b81;
 }
 
 textarea {
@@ -48,6 +49,7 @@ textarea {
   border: 1px solid rgb(214, 213, 213);
   border-radius: 3px;
   background-color: white;
+  outline-color: #562b81;
 }
 
 .save-btn {
