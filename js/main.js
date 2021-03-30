@@ -24,7 +24,7 @@ $form.addEventListener('submit', function (event) {
   };
 
   data.nextEntryId++;
-  data.entries.push(entry);
+  data.entries.unshift(entry);
   $imgPreview.setAttribute('src', defaultImg);
   $form.reset();
 });
