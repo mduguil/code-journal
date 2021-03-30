@@ -20,6 +20,7 @@ $form.addEventListener('submit', function (event) {
     notes: $notes.value,
     entryId: data.nextEntryId
   };
+
   event.preventDefault();
   data.nextEntryId++;
   data.entries.push(entry);
