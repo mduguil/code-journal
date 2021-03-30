@@ -61,7 +61,8 @@ function addEntries(entry) {
 
   return $ul;
 }
-
-for (var i = 0; i < data.entries.length; i++) {
-  $entryContainer.appendChild(addEntries(data.entries[i]));
-}
+window.addEventListener('DOMContentLoaded', function (event) {
+  for (var i = 0; i < data.entries.length; i++) {
+    $entryContainer.appendChild(addEntries(data.entries[i]));
+  }
+});
