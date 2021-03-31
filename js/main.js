@@ -13,28 +13,21 @@ var $entryContainer = document.querySelector('.entry-container');
 var $placeholderText = document.querySelector('.placeholder-container');
 var $ul = document.createElement('ul');
 
-$imgUrl.addEventListener('input', function (event) {
-  $imgPreview.setAttribute('src', event.target.value);
-});
-
 function showEntries(event) {
   $formContainer.className = 'hidden';
   $addEntryBtn.className = 'add-btn-container';
   $entryContainer.className = 'container entry-container';
+  data.view = 'entries';
 }
 
-$navbarEntries.addEventListener('click', showEntries);
-
-$addEntryBtn.addEventListener('click', function (event) {
+function showForm(event) {
   $formContainer.className = 'entry-form';
   $addEntryBtn.className = 'add-btn-container hidden';
-});
-
-if (data.entries.length === 0) {
-  $placeholderText.className = 'placeholder-container';
+  $entryContainer.className = 'container entry-container hidden';
+  data.view = 'entry-form';
 }
 
-$form.addEventListener('submit', function (event) {
+function submitEntry(event) {
   event.preventDefault();
 
   var entry = {
@@ -46,10 +39,11 @@ $form.addEventListener('submit', function (event) {
 
   data.nextEntryId++;
   data.entries.unshift(entry);
+  data.view = 'entries';
   $imgPreview.setAttribute('src', defaultImg);
   $form.reset();
   showEntries();
-});
+}
 
 function addEntries(entry) {
 
@@ -82,8 +76,28 @@ function addEntries(entry) {
   return $ul;
 }
 
+if (data.entries.length === 0) {
+  $placeholderText.className = 'placeholder-container';
+}
+
+$navbarEntries.addEventListener('click', showEntries);
+
+$addEntryBtn.addEventListener('click', showForm);
+
+$imgUrl.addEventListener('input', function (event) {
+  $imgPreview.setAttribute('src', event.target.value);
+});
+
+$form.addEventListener('submit', submitEntry);
+
 window.addEventListener('DOMContentLoaded', function (event) {
   for (var i = 0; i < data.entries.length; i++) {
     $entryContainer.appendChild(addEntries(data.entries[i]));
+  }
+
+  if (data.view === 'entries') {
+    showEntries();
+  } else {
+    showForm();
   }
 });
