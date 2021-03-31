@@ -109,6 +109,11 @@ li {
   font-size: 1.3rem;
 }
 
+.placeholder-container {
+  text-align: center;
+  font-size: 1.3rem;
+}
+
 button:hover {
   cursor: pointer;
 }

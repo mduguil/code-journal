@@ -10,6 +10,7 @@ var $notes = document.querySelector('#notes');
 var $navbarEntries = document.querySelector('.nav-entries');
 var $addEntryBtn = document.querySelector('.add-btn-container');
 var $entryContainer = document.querySelector('.entry-container');
+var $placeholderText = document.querySelector('.placeholder-container');
 
 $imgUrl.addEventListener('input', function (event) {
   $imgPreview.setAttribute('src', event.target.value);
@@ -24,6 +25,10 @@ $addEntryBtn.addEventListener('click', function (event) {
   $formContainer.className = 'entry-form';
   $addEntryBtn.className = 'add-btn-container hidden';
 });
+
+if (data.entries.length === 0) {
+  $placeholderText.className = 'placeholder-container';
+}
 
 $form.addEventListener('submit', function (event) {
   event.preventDefault();
