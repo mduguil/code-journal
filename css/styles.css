@@ -89,7 +89,8 @@ button {
   background-color: #562b81;
   text-transform: uppercase;
   color: white;
-  padding: 4px 11px;
+  font-size: 1rem;
+  padding: 6px 13px;
   border-radius: 3px;
   border: none;
 }
@@ -107,6 +108,11 @@ li {
 .entry-title {
   font-weight: bold;
   font-size: 1.3rem;
+}
+
+img {
+  margin-bottom: 10px;
+  width: 100%;
 }
 
 .placeholder-container {
