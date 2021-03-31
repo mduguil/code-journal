@@ -27,6 +27,10 @@ function showForm(event) {
   data.view = 'entry-form';
 }
 
+function hidePlaceholder(event) {
+  $placeholderText.className = 'placeholder-container hidden';
+}
+
 function submitEntry(event) {
   event.preventDefault();
 
@@ -44,6 +48,7 @@ function submitEntry(event) {
   $form.reset();
   $ul.prepend(addEntries(entry));
   showEntries();
+  hidePlaceholder();
 }
 
 function addEntries(entry) {
