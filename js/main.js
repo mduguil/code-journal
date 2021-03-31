@@ -11,15 +11,19 @@ var $navbarEntries = document.querySelector('.nav-entries');
 var $addEntryBtn = document.querySelector('.add-btn-container');
 var $entryContainer = document.querySelector('.entry-container');
 var $placeholderText = document.querySelector('.placeholder-container');
+var $ul = document.createElement('ul');
 
 $imgUrl.addEventListener('input', function (event) {
   $imgPreview.setAttribute('src', event.target.value);
 });
 
-$navbarEntries.addEventListener('click', function (event) {
+function showEntries(event) {
   $formContainer.className = 'hidden';
   $addEntryBtn.className = 'add-btn-container';
-});
+  $entryContainer.className = 'container entry-container';
+}
+
+$navbarEntries.addEventListener('click', showEntries);
 
 $addEntryBtn.addEventListener('click', function (event) {
   $formContainer.className = 'entry-form';
@@ -44,11 +48,10 @@ $form.addEventListener('submit', function (event) {
   data.entries.unshift(entry);
   $imgPreview.setAttribute('src', defaultImg);
   $form.reset();
+  showEntries();
 });
 
 function addEntries(entry) {
-
-  var $ul = document.createElement('ul');
 
   var $containerRow = document.createElement('div');
   $containerRow.setAttribute('class', 'row');
