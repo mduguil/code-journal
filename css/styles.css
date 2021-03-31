@@ -35,6 +35,10 @@ a {
   margin-bottom: 23px;
 }
 
+.hidden {
+  display: none;
+}
+
 .entry-form {
   display: flex;
   justify-content: center;

@@ -1,16 +1,21 @@
 /* global data */
 /* exported data */
-
+var $formContainer = document.querySelector('#entry-form');
 var $form = document.querySelector('form');
 var $imgPreview = document.querySelector('.img-preview');
 var defaultImg = $imgPreview.getAttribute('src');
 var $title = document.querySelector('#title');
 var $imgUrl = document.querySelector('#img-url');
 var $notes = document.querySelector('#notes');
+var $navbarEntries = document.querySelector('.nav-entries');
 var $entryContainer = document.querySelector('.entry-container');
 
 $imgUrl.addEventListener('input', function (event) {
   $imgPreview.setAttribute('src', event.target.value);
+});
+
+$navbarEntries.addEventListener('click', function (event) {
+  $formContainer.setAttribute('class', 'hidden');
 });
 
 $form.addEventListener('submit', function (event) {
@@ -61,6 +66,7 @@ function addEntries(entry) {
 
   return $ul;
 }
+
 window.addEventListener('DOMContentLoaded', function (event) {
   for (var i = 0; i < data.entries.length; i++) {
     $entryContainer.appendChild(addEntries(data.entries[i]));
