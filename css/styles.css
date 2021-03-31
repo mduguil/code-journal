@@ -31,6 +31,12 @@ a {
   text-decoration: none;
 }
 
+.section-name {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .row {
   margin-bottom: 23px;
 }
@@ -91,7 +97,7 @@ button {
 ul {
   list-style-type: none;
   padding-left: 0;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
 
 li {
@@ -101,4 +107,8 @@ li {
 .entry-title {
   font-weight: bold;
   font-size: 1.3rem;
+}
+
+button:hover {
+  cursor: pointer;
 }

@@ -8,6 +8,7 @@ var $title = document.querySelector('#title');
 var $imgUrl = document.querySelector('#img-url');
 var $notes = document.querySelector('#notes');
 var $navbarEntries = document.querySelector('.nav-entries');
+var $addEntryBtn = document.querySelector('.add-btn-container');
 var $entryContainer = document.querySelector('.entry-container');
 
 $imgUrl.addEventListener('input', function (event) {
@@ -15,7 +16,13 @@ $imgUrl.addEventListener('input', function (event) {
 });
 
 $navbarEntries.addEventListener('click', function (event) {
-  $formContainer.setAttribute('class', 'hidden');
+  $formContainer.className = 'hidden';
+  $addEntryBtn.className = 'add-btn-container';
+});
+
+$addEntryBtn.addEventListener('click', function (event) {
+  $formContainer.className = 'entry-form';
+  $addEntryBtn.className = 'add-btn-container hidden';
 });
 
 $form.addEventListener('submit', function (event) {
