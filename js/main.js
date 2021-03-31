@@ -11,7 +11,7 @@ var $navbarEntries = document.querySelector('.nav-entries');
 var $addEntryBtn = document.querySelector('.add-btn-container');
 var $entryContainer = document.querySelector('.entry-container');
 var $placeholderText = document.querySelector('.placeholder-container');
-var $ul = document.createElement('ul');
+var $ul = document.querySelector('ul');
 
 function showEntries(event) {
   $formContainer.className = 'hidden';
@@ -42,6 +42,7 @@ function submitEntry(event) {
   data.view = 'entries';
   $imgPreview.setAttribute('src', defaultImg);
   $form.reset();
+  $ul.prepend(addEntries(entry));
   showEntries();
 }
 
@@ -49,7 +50,6 @@ function addEntries(entry) {
 
   var $containerRow = document.createElement('div');
   $containerRow.setAttribute('class', 'row');
-  $ul.appendChild($containerRow);
 
   var $containerColumn1 = document.createElement('div');
   $containerColumn1.setAttribute('class', 'column-half');
@@ -73,7 +73,7 @@ function addEntries(entry) {
   $entryNotes.textContent = entry.notes;
   $containerColumn2.appendChild($entryNotes);
 
-  return $ul;
+  return $containerRow;
 }
 
 if (data.entries.length === 0) {
@@ -92,7 +92,7 @@ $form.addEventListener('submit', submitEntry);
 
 window.addEventListener('DOMContentLoaded', function (event) {
   for (var i = 0; i < data.entries.length; i++) {
-    $entryContainer.appendChild(addEntries(data.entries[i]));
+    $ul.appendChild(addEntries(data.entries[i]));
   }
 
   if (data.view === 'entries') {
