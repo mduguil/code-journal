@@ -108,7 +108,11 @@ $imgUrl.addEventListener('input', function (event) {
 
 $form.addEventListener('submit', submitEntry);
 
-$entryContainer.addEventListener('click', function (event) {});
+$entryContainer.addEventListener('click', function (event) {
+  if (event.target.matches('i')) {
+    showForm();
+  }
+});
 
 window.addEventListener('DOMContentLoaded', function (event) {
   for (var i = 0; i < data.entries.length; i++) {
