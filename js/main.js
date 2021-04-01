@@ -86,11 +86,17 @@ function saveEntry(event) {
     $ul.prepend(addEntries(entry));
   } else {
     for (var i = 0; i < data.entries.length; i++) {
-      if (Number(data.entries[i].entryId) === Number(data.editing.entryId)) {
+      var currentId = data.editing.entryId;
+
+      if (Number(data.entries[i].entryId) === Number(currentId)) {
         var currentEntryData = data.entries[i];
         currentEntryData.title = $form.elements.title.value;
         currentEntryData.img = $form.elements.img.value;
         currentEntryData.notes = $form.elements.notes.value;
+        currentEntryData.entryId = currentId;
+
+        var $entryList = document.querySelectorAll('.entry-id');
+        $entryList[i].replaceWith(addEntries(currentEntryData));
       }
     }
   }
@@ -106,7 +112,6 @@ function addEntries(entry) {
   var $containerRow = document.createElement('div');
   $containerRow.setAttribute('class', 'row entry-id');
   $containerRow.setAttribute('data-entry-id', entry.entryId);
-  $ul.prepend($containerRow);
 
   var $containerColumn1 = document.createElement('div');
   $containerColumn1.setAttribute('class', 'column-half');
