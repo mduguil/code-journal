@@ -108,6 +108,8 @@ $imgUrl.addEventListener('input', function (event) {
 
 $form.addEventListener('submit', submitEntry);
 
+$entryContainer.addEventListener('click', function (event) {});
+
 window.addEventListener('DOMContentLoaded', function (event) {
   for (var i = 0; i < data.entries.length; i++) {
     $ul.appendChild(addEntries(data.entries[i]));
