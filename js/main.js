@@ -73,20 +73,31 @@ function editEntry(event) {
 function saveEntry(event) {
   event.preventDefault();
 
-  var entry = {
-    title: $title.value,
-    imgUrl: $imgUrl.value,
-    notes: $notes.value,
-    entryId: data.nextEntryId
-  };
+  if (data.editing === null) {
+    var entry = {
+      title: $title.value,
+      imgUrl: $imgUrl.value,
+      notes: $notes.value,
+      entryId: data.nextEntryId
+    };
 
-  data.nextEntryId++;
-  data.entries.unshift(entry);
+    data.nextEntryId++;
+    data.entries.unshift(entry);
+    $ul.prepend(addEntries(entry));
+  } else {
+    for (var i = 0; i < data.entries.length; i++) {
+      if (Number(data.entries[i].entryId) === Number(data.editing.entryId)) {
+        var currentEntryData = data.entries[i];
+        currentEntryData.title = $form.elements.title.value;
+        currentEntryData.img = $form.elements.img.value;
+        currentEntryData.notes = $form.elements.notes.value;
+      }
+    }
+  }
 
+  data.editing = null;
   data.view = 'entries';
-  $imgPreview.setAttribute('src', defaultImg);
   $form.reset();
-  $ul.prepend(addEntries(entry));
   showEntries();
   hidePlaceholder();
 }
