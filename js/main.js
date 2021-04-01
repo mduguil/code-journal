@@ -78,6 +78,7 @@ function addEntries(entry) {
 
   var $entryTitle = document.createElement('li');
   $entryTitle.setAttribute('class', 'entry-title');
+  $entryTitle.setAttribute('data-entry-id', entry.entryId);
   $entryTitle.textContent = entry.title;
   $titleContainer.appendChild($entryTitle);
 
