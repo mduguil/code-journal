@@ -44,6 +44,26 @@ function hidePlaceholder(event) {
   $placeholderText.className = 'placeholder-container hidden';
 }
 
+function editEntry(event) {
+  if (event.target.matches('i')) {
+    showEditEntries();
+
+    var $entryRow = event.target.closest('.entry-id');
+    var $entryId = $entryRow.getAttribute('data-entry-id');
+
+    for (var i = 0; i < data.entries.length; i++) {
+      if (Number(data.entries[i].entryId) === Number($entryId)) {
+        data.editing = data.entries[i];
+
+        $form.elements.title.value = data.editing.title;
+        $form.elements.img.value = data.editing.imgUrl;
+        $form.elements.notes.value = data.editing.notes;
+        $imgPreview.setAttribute('src', data.editing.imgUrl);
+      }
+    }
+  }
+}
+
 function submitEntry(event) {
   event.preventDefault();
 
@@ -118,20 +138,7 @@ $imgUrl.addEventListener('input', function (event) {
 
 $form.addEventListener('submit', submitEntry);
 
-$entryContainer.addEventListener('click', function (event) {
-  if (event.target.matches('i')) {
-    showEditEntries();
-
-    var $entryRow = event.target.closest('.entry-id');
-    var $entryId = $entryRow.getAttribute('data-entry-id');
-
-    for (var i = 0; i < data.entries.length; i++) {
-      if (Number(data.entries[i].entryId) === Number($entryId)) {
-        data.editing = data.entries[i];
-      }
-    }
-  }
-});
+$entryContainer.addEventListener('click', editEntry);
 
 window.addEventListener('DOMContentLoaded', function (event) {
   for (var i = 0; i < data.entries.length; i++) {
