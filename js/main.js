@@ -57,7 +57,8 @@ function submitEntry(event) {
 
 function addEntries(entry) {
   var $containerRow = document.createElement('div');
-  $containerRow.setAttribute('class', 'row');
+  $containerRow.setAttribute('class', 'row entry-id');
+  $containerRow.setAttribute('data-entry-id', entry.entryId);
   $ul.prepend($containerRow);
 
   var $containerColumn1 = document.createElement('div');
@@ -78,7 +79,6 @@ function addEntries(entry) {
 
   var $entryTitle = document.createElement('li');
   $entryTitle.setAttribute('class', 'entry-title');
-  $entryTitle.setAttribute('data-entry-id', entry.entryId);
   $entryTitle.textContent = entry.title;
   $titleContainer.appendChild($entryTitle);
 
@@ -111,6 +111,10 @@ $form.addEventListener('submit', submitEntry);
 $entryContainer.addEventListener('click', function (event) {
   if (event.target.matches('i')) {
     showForm();
+    var $entryRow = event.target.closest('.entry-id');
+    var $entryId = $entryRow.getAttribute('data-entry-id');
+
+    data.editing = $entryId;
   }
 });
 
