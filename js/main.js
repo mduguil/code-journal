@@ -1,6 +1,7 @@
 /* global data */
 /* exported data */
 var $formContainer = document.querySelector('#entry-form');
+var $formHeader = document.querySelector('h1');
 var $form = document.querySelector('form');
 var $imgPreview = document.querySelector('.img-preview');
 var defaultImg = $imgPreview.getAttribute('src');
@@ -28,7 +29,15 @@ function showForm(event) {
   $formContainer.className = 'entry-form';
   $addEntryBtn.className = 'add-btn-container hidden';
   $entryContainer.className = 'container entry-container hidden';
+  $formHeader.textContent = 'New Entry';
   data.view = 'entry-form';
+}
+
+function showEditEntries(event) {
+  $formContainer.className = 'entry-form';
+  $addEntryBtn.className = 'add-btn-container hidden';
+  $entryContainer.className = 'container entry-container hidden';
+  $formHeader.textContent = 'Edit Entry';
 }
 
 function hidePlaceholder(event) {
@@ -66,6 +75,7 @@ function addEntries(entry) {
   $containerRow.appendChild($containerColumn1);
 
   var $entryImg = document.createElement('img');
+  $entryImg.setAttribute('class', 'entry-img');
   $entryImg.setAttribute('src', entry.imgUrl);
   $containerColumn1.appendChild($entryImg);
 
@@ -110,11 +120,16 @@ $form.addEventListener('submit', submitEntry);
 
 $entryContainer.addEventListener('click', function (event) {
   if (event.target.matches('i')) {
-    showForm();
+    showEditEntries();
+
     var $entryRow = event.target.closest('.entry-id');
     var $entryId = $entryRow.getAttribute('data-entry-id');
 
-    data.editing = $entryId;
+    for (var i = 0; i < data.entries.length; i++) {
+      if (Number(data.entries[i].entryId) === Number($entryId)) {
+        data.editing = data.entries[i];
+      }
+    }
   }
 });
 
