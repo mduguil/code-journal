@@ -7,17 +7,42 @@
   background-color: #562b81;
 }
 
+header {
+  background-color: #562b81;
+  padding: 10px;
+}
+
 h2 {
   background-color: #562b81;
   margin: 0;
-  padding: 10px;
   color: white;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 400;
+  display: inline;
+  margin-right: 20px;
+}
+
+.nav-entries {
+  background-color: #562b81;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+}
+
+.section-name {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .row {
   margin-bottom: 23px;
+}
+
+.hidden {
+  display: none;
 }
 
 .entry-form {
@@ -64,7 +89,38 @@ button {
   background-color: #562b81;
   text-transform: uppercase;
   color: white;
-  padding: 4px 11px;
+  font-size: 1rem;
+  padding: 6px 13px;
   border-radius: 3px;
   border: none;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 50px;
+}
+
+li {
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.entry-title {
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+img {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.placeholder-container {
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+button:hover {
+  cursor: pointer;
 }
