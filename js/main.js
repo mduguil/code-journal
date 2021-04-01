@@ -30,7 +30,13 @@ function showForm(event) {
   $addEntryBtn.className = 'add-btn-container hidden';
   $entryContainer.className = 'container entry-container hidden';
   $formHeader.textContent = 'New Entry';
+  data.editing = null;
   data.view = 'entry-form';
+
+  $form.elements.title.value = null;
+  $form.elements.img.value = null;
+  $form.elements.notes.value = null;
+  $imgPreview.setAttribute('src', defaultImg);
 }
 
 function showEditEntries(event) {
@@ -64,7 +70,7 @@ function editEntry(event) {
   }
 }
 
-function submitEntry(event) {
+function saveEntry(event) {
   event.preventDefault();
 
   var entry = {
@@ -76,6 +82,7 @@ function submitEntry(event) {
 
   data.nextEntryId++;
   data.entries.unshift(entry);
+
   data.view = 'entries';
   $imgPreview.setAttribute('src', defaultImg);
   $form.reset();
@@ -136,7 +143,7 @@ $imgUrl.addEventListener('input', function (event) {
   $imgPreview.setAttribute('src', event.target.value);
 });
 
-$form.addEventListener('submit', submitEntry);
+$form.addEventListener('submit', saveEntry);
 
 $entryContainer.addEventListener('click', editEntry);
 
