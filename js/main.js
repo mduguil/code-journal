@@ -18,6 +18,10 @@ function showEntries(event) {
   $addEntryBtn.className = 'add-btn-container';
   $entryContainer.className = 'container entry-container';
   data.view = 'entries';
+
+  if (data.entries.length === 0) {
+    $placeholderText.className = 'placeholder-container';
+  }
 }
 
 function showForm(event) {
@@ -79,10 +83,6 @@ function addEntries(entry) {
   $containerColumn2.appendChild($entryNotes);
 
   return $containerRow;
-}
-
-if (data.entries.length === 0) {
-  $placeholderText.className = 'placeholder-container';
 }
 
 $navbarEntries.addEventListener('click', showEntries);
