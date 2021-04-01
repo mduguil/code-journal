@@ -102,13 +102,24 @@ ul {
 }
 
 li {
-  margin-bottom: 10px;
   line-height: 1.4;
+}
+
+.title-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 .entry-title {
   font-weight: bold;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
+}
+
+.fa-pen {
+  color: #562b81;
+  font-size: 1.4rem;
 }
 
 img {
@@ -122,5 +133,9 @@ img {
 }
 
 button:hover {
+  cursor: pointer;
+}
+
+i:hover {
   cursor: pointer;
 }

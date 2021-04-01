@@ -56,9 +56,9 @@ function submitEntry(event) {
 }
 
 function addEntries(entry) {
-
   var $containerRow = document.createElement('div');
   $containerRow.setAttribute('class', 'row');
+  $ul.prepend($containerRow);
 
   var $containerColumn1 = document.createElement('div');
   $containerColumn1.setAttribute('class', 'column-half');
@@ -72,10 +72,22 @@ function addEntries(entry) {
   $containerColumn2.setAttribute('class', 'column-half');
   $containerRow.appendChild($containerColumn2);
 
+  var $titleContainer = document.createElement('div');
+  $titleContainer.setAttribute('class', 'title-container');
+  $containerColumn2.appendChild($titleContainer);
+
   var $entryTitle = document.createElement('li');
   $entryTitle.setAttribute('class', 'entry-title');
   $entryTitle.textContent = entry.title;
-  $containerColumn2.appendChild($entryTitle);
+  $titleContainer.appendChild($entryTitle);
+
+  var $editIconContainer = document.createElement('div');
+  $editIconContainer.setAttribute('class', 'edit-icon-container');
+  $titleContainer.appendChild($editIconContainer);
+
+  var $editIcon = document.createElement('i');
+  $editIcon.setAttribute('class', 'fas fa-pen');
+  $editIconContainer.appendChild($editIcon);
 
   var $entryNotes = document.createElement('li');
   $entryNotes.setAttribute('class', 'entry-notes');
