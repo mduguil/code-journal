@@ -83,7 +83,12 @@ textarea {
 }
 
 .save-btn {
-  text-align: end;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.only-save-btn {
+  width: 100%;
 }
 
 button {
