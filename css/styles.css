@@ -41,10 +41,6 @@ a {
   margin-bottom: 23px;
 }
 
-.hidden {
-  display: none;
-}
-
 .img-preview {
   width: 100%;
   border-radius: 3px;
@@ -74,6 +70,16 @@ textarea {
   border-radius: 3px;
   background-color: white;
   outline-color: #562b81;
+}
+
+.entry-control {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.del-btn {
+  color: red;
+  text-decoration: underline;
 }
 
 .save-btn {
