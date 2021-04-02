@@ -13,6 +13,8 @@ var $addEntryBtn = document.querySelector('.add-btn-container');
 var $entryContainer = document.querySelector('.entry-container');
 var $placeholderText = document.querySelector('.placeholder-container');
 var $ul = document.querySelector('ul');
+var $delBtn = document.querySelector('.del-btn');
+var $saveBtn = document.querySelector('.save-btn');
 
 function showEntries(event) {
   $formContainer.className = 'hidden';
@@ -23,6 +25,16 @@ function showEntries(event) {
   if (data.entries.length === 0) {
     $placeholderText.className = 'placeholder-container';
   }
+}
+
+function showDelBtn(event) {
+  $delBtn.setAttribute('class', 'del-btn');
+  $saveBtn.setAttribute('class', 'save-btn');
+}
+
+function hideDelBtn(event) {
+  $delBtn.setAttribute('class', 'del-btn hidden');
+  $saveBtn.setAttribute('class', 'save-btn only-save-btn');
 }
 
 function showForm(event) {
@@ -37,6 +49,8 @@ function showForm(event) {
   $form.elements.img.value = null;
   $form.elements.notes.value = null;
   $imgPreview.setAttribute('src', defaultImg);
+
+  hideDelBtn();
 }
 
 function showEditEntries(event) {
@@ -44,6 +58,8 @@ function showEditEntries(event) {
   $addEntryBtn.className = 'add-btn-container hidden';
   $entryContainer.className = 'container entry-container hidden';
   $formHeader.textContent = 'Edit Entry';
+
+  showDelBtn();
 }
 
 function hidePlaceholder(event) {
@@ -154,6 +170,8 @@ function addEntries(entry) {
 $navbarEntries.addEventListener('click', showEntries);
 
 $addEntryBtn.addEventListener('click', showForm);
+
+$delBtn.addEventListener('click');
 
 $imgUrl.addEventListener('input', function (event) {
   $imgPreview.setAttribute('src', event.target.value);

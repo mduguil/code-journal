@@ -80,6 +80,7 @@ textarea {
 .del-btn {
   color: red;
   text-decoration: underline;
+  margin-left: 14px;
 }
 
 .save-btn {
