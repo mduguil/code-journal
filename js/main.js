@@ -16,6 +16,7 @@ var $ul = document.querySelector('ul');
 var $delBtn = document.querySelector('.del-btn');
 var $saveBtn = document.querySelector('.save-btn');
 var $confirmation = document.querySelector('.pop-up-container');
+var $cancel = document.querySelector('.no-btn');
 
 function showEntries(event) {
   $formContainer.className = 'hidden';
@@ -42,9 +43,9 @@ function showConfirmationPopUp(event) {
   $confirmation.setAttribute('class', 'pop-up-container');
 }
 
-// function hideConfirmationPopUp(event) {
-//   $confirmation.setAttribute('class', 'pop-up-container hidden');
-// }
+function hideConfirmationPopUp(event) {
+  $confirmation.setAttribute('class', 'pop-up-container hidden');
+}
 
 function showForm(event) {
   $formContainer.className = 'entry-form';
@@ -181,6 +182,8 @@ $navbarEntries.addEventListener('click', showEntries);
 $addEntryBtn.addEventListener('click', showForm);
 
 $delBtn.addEventListener('click', showConfirmationPopUp);
+
+$cancel.addEventListener('click', hideConfirmationPopUp);
 
 $imgUrl.addEventListener('input', function (event) {
   $imgPreview.setAttribute('src', event.target.value);
