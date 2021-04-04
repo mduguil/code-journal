@@ -17,6 +17,8 @@ var $delBtn = document.querySelector('.del-btn');
 var $saveBtn = document.querySelector('.save-btn');
 var $confirmation = document.querySelector('.pop-up-container');
 var $cancel = document.querySelector('.no-btn');
+var $confrim = document.querySelector('.yes-btn');
+var currentEntryId = null;
 
 function showEntries(event) {
   $formContainer.className = 'hidden';
@@ -45,6 +47,20 @@ function showConfirmationPopUp(event) {
 
 function hideConfirmationPopUp(event) {
   $confirmation.setAttribute('class', 'pop-up-container hidden');
+}
+
+function deleteEntry(event) {
+  var el = document.querySelector('[data-entry-id="' + currentEntryId + '"]');
+  el.remove();
+  data.entries = data.entries.filter(function (item) {
+    if (item.entryId === Number(currentEntryId)) {
+      return false;
+    }
+    return true;
+  });
+
+  hideConfirmationPopUp();
+  showEntries();
 }
 
 function showForm(event) {
@@ -82,6 +98,8 @@ function editEntry(event) {
 
     var $entryRow = event.target.closest('.entry-id');
     var $entryId = $entryRow.getAttribute('data-entry-id');
+
+    currentEntryId = $entryId;
 
     for (var i = 0; i < data.entries.length; i++) {
       if (Number(data.entries[i].entryId) === Number($entryId)) {
@@ -184,6 +202,8 @@ $addEntryBtn.addEventListener('click', showForm);
 $delBtn.addEventListener('click', showConfirmationPopUp);
 
 $cancel.addEventListener('click', hideConfirmationPopUp);
+
+$confrim.addEventListener('click', deleteEntry);
 
 $imgUrl.addEventListener('input', function (event) {
   $imgPreview.setAttribute('src', event.target.value);
